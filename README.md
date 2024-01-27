@@ -4,7 +4,7 @@ A library that provides implementation of ordered linked list.
 
 ## Introduction ##
 Sorted linked list is single-linked implementation of generic collection. List keeps stored items in order defined by
-provided Comparator.
+provided Comparator. As long as provided comparator is able to compare null, list allows to store nulls.
 
 Library is intentionally compiled with JDK 11 to provide reasonable compatibility.
 

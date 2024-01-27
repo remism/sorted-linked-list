@@ -4,6 +4,14 @@ import lombok.Getter;
 
 import java.util.Comparator;
 
+/**
+ * Single-linked sorted list. This implementation is not synchronized.
+ * <p>
+ * It allows to store nulls as long as provided comparator is capable of comparing null. This effectively means that
+ * nulls are first or last.
+ *
+ * @param <T> Type of items to be stored
+ */
 public class SortedLinkedList<T> {
     transient private Node first;
 
@@ -78,6 +86,18 @@ public class SortedLinkedList<T> {
             this.value = value;
         }
 
+    }
+
+    public static int compareIntegersWithNullsLast(Integer x, Integer y) {
+        if (x != null && y != null) {
+            return Integer.compare(x, y);
+        } else if (x == null && y != null) {//nulls last
+            return 1;
+        } else if (x != null) {//nulls last
+            return -1;
+        } else {
+            return 0;//nulls are equals
+        }
     }
 
 }
