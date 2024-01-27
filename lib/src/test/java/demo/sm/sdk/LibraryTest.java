@@ -2,6 +2,9 @@ package demo.sm.sdk;
 
 import org.junit.jupiter.api.Test;
 
+import java.text.Collator;
+import java.util.Locale;
+
 import static org.assertj.core.api.Assertions.*;
 
 
@@ -43,6 +46,26 @@ class LibraryTest {
 
         assertThat(list.getSize()).isEqualTo(8);
         assertThat(list.toArray()).containsExactly(1, 3, 3, 4, 5, 6, null, null);
+    }
+
+    @Test
+    void testStringListIsOrdered() {
+        Collator collator = Collator.getInstance(Locale.forLanguageTag("cs_CZ"));
+        SortedLinkedList<String> list = new SortedLinkedList<>(collator::compare);
+
+        list.add("C");
+        list.add("c");
+        list.add("A");
+        list.add("Č");
+        list.add("ř");
+        list.add("Ř");
+        list.add("r");
+        list.add("9");
+        list.add("R");
+        list.add("č");
+
+        assertThat(list.getSize()).isEqualTo(10);
+        assertThat(list.toArray()).containsExactly( "9", "A", "c", "C", "č", "Č", "r", "R", "ř", "Ř");
     }
 
 }
