@@ -2,19 +2,19 @@ package demo.sm.sdk;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.*;
+
 
 class LibraryTest {
 
 
 
     @Test
-    void testListIsOrdered() {
+    void testIntegerListIsOrdered() {
         SortedLinkedList<Integer> list = new SortedLinkedList<>(Integer::compare);
 
-        assertEquals(0, list.getSize());
-        assertArrayEquals(new Object[0], list.toArray());
+        assertThat(list.getSize()).isEqualTo(0);
+        assertThat(list.toArray()).containsExactly();
 
 
         list.add(5);
@@ -24,8 +24,8 @@ class LibraryTest {
         list.add(1);
         list.add(3);
 
-        assertEquals(6, list.getSize());
-        assertArrayEquals(new Object[]{1, 3, 3, 4, 5, 6}, list.toArray());
+        assertThat(list.getSize()).isEqualTo(6);
+        assertThat(list.toArray()).containsExactly(1, 3, 3, 4, 5, 6);
     }
 
     @Test
@@ -41,8 +41,8 @@ class LibraryTest {
         list.add(3);
         list.add(null);
 
-        assertEquals(8, list.getSize());
-        assertArrayEquals(new Object[]{1, 3, 3, 4, 5, 6, null, null,}, list.toArray());
+        assertThat(list.getSize()).isEqualTo(8);
+        assertThat(list.toArray()).containsExactly(1, 3, 3, 4, 5, 6, null, null);
     }
 
 }
