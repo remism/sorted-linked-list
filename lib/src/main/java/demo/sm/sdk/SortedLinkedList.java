@@ -310,16 +310,4 @@ public class SortedLinkedList<T> implements Collection<T> {
         }
     }
 
-    public static int compareIntegersWithNullsLast(Integer x, Integer y) {
-        if (x != null && y != null) {
-            return Integer.compare(x, y);
-        } else if (x == null && y != null) {//nulls last
-            return 1;
-        } else if (x != null) {//nulls last
-            return -1;
-        } else {
-            return 0;//nulls are equals
-        }
-    }
-
 }

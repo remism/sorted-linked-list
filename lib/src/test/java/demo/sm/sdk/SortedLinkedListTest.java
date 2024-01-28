@@ -40,7 +40,7 @@ class SortedLinkedListTest {
 
     @Test
     void testRemove() {
-        SortedLinkedList<Integer> list = new SortedLinkedList<>(SortedLinkedList::compareIntegersWithNullsLast);
+        SortedLinkedList<Integer> list = new SortedLinkedList<>(Comparator.nullsLast(Integer::compareTo));
 
         list.add(5);
         list.add(6);
@@ -81,7 +81,7 @@ class SortedLinkedListTest {
 
     @Test
     void testContains() {
-        SortedLinkedList<Integer> list = new SortedLinkedList<>(SortedLinkedList::compareIntegersWithNullsLast);
+        SortedLinkedList<Integer> list = new SortedLinkedList<>(Comparator.nullsLast(Integer::compareTo));
 
         list.add(5);
         list.add(6);
@@ -103,7 +103,7 @@ class SortedLinkedListTest {
 
     @Test
     void testRetainAll() {
-        SortedLinkedList<Integer> list = new SortedLinkedList<>(SortedLinkedList::compareIntegersWithNullsLast);
+        SortedLinkedList<Integer> list = new SortedLinkedList<>(Comparator.nullsLast(Integer::compareTo));
 
         list.add(5);
         list.add(6);
@@ -123,7 +123,7 @@ class SortedLinkedListTest {
 
     @Test
     void testAddAll() {
-        SortedLinkedList<Integer> list = new SortedLinkedList<>(SortedLinkedList::compareIntegersWithNullsLast);
+        SortedLinkedList<Integer> list = new SortedLinkedList<>(Comparator.nullsLast(Integer::compareTo));
 
         assertThat(list.addAll(Collections.emptyList())).isFalse();
 
@@ -153,7 +153,7 @@ class SortedLinkedListTest {
 
     @Test
     void testListContainsNull() {
-        SortedLinkedList<Integer> list = new SortedLinkedList<>(SortedLinkedList::compareIntegersWithNullsLast);
+        SortedLinkedList<Integer> list = new SortedLinkedList<>(Comparator.nullsLast(Integer::compareTo));
 
         list.add(5);
         list.add(6);
