@@ -9,10 +9,25 @@ provided Comparator. As long as provided comparator is able to compare null, lis
 Library is intentionally compiled with JDK 11 to provide reasonable compatibility.
 
 ## Getting started ##
-TBD
+Put the final `lib.jar` on your classpath.
+
+You can also build and publish to you maven local using `publishToMavenLocal`. Then add the library to your project
+dependencies: `implementation "demo.sm.sdk:linked-list:VERSION"`
 
 ## Usage ##
-TBD
+Create new instance of collection using your own comparator, see the examples: 
+
+- for integers
+`new SortedLinkedList<>(Integer::compare);`
+- allowing nulls
+`new SortedLinkedList<>(Comparator.nullsLast(Integer::compareTo));`
+- alphabetical order for Strings
+```Java
+    Collator collator = Collator.getInstance(Locale.forLanguageTag("cs_CZ"));
+    SortedLinkedList<String> list = new SortedLinkedList<>(collator::compare);
+```
+
+You can then use standard Java API of `java.util.Collection`
 
 ## Build ##
 Library is single module gradle project.
