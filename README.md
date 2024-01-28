@@ -41,3 +41,16 @@ Project contains reasonable coding styles default delivered via [editorconfig](h
 ### Tests ###
 Library is covered with unit tests (JUnit 5). Quality gate of 80% test coverage is enforced
 by [Jacoco](https://docs.gradle.org/current/dsl/org.gradle.testing.jacoco.tasks.JacocoCoverageVerification.html) (see the [./lib/build.gradle.kts](lib/build.gradle.kts)).
+
+
+# Considerations #
+- publish to public/central maven repo
+- using natural ordering (accept object of Comparable type)
+- add API to simulate Stack-like (getting element from the end of the list)
+- extended api to
+  - get index of element
+  - split list by element
+- improve code smell/code style enforce and detection
+- optimization for int primitives (avoid autoboxing overhead)
+- add performance test
+- override equals and hashcode (so we can call equals on the list) 
