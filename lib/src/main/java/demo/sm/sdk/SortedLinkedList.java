@@ -14,7 +14,7 @@ import java.util.function.Predicate;
  *
  * @param <T> Type of items to be stored
  */
-public class SortedLinkedList<T> implements Collection<T> {
+public class SortedLinkedList<T> implements Queue<T> {
     transient private Node first;
 
     @Getter(onMethod = @__(@Override))
@@ -27,7 +27,7 @@ public class SortedLinkedList<T> implements Collection<T> {
     }
 
     /**
-     * Inserts the element in specific position using comparator.
+     * Inserts the element at specific position using comparator.
      *
      * @param value element whose presence in this collection is to be ensured
      * @return true if the collection was changed
@@ -65,6 +65,76 @@ public class SortedLinkedList<T> implements Collection<T> {
         }
         size++;
         return true;
+    }
+
+    /**
+     * Inserts the element at specific position using comparator. This is effectively the same as `add(T t)`.
+     *
+     * @param value element whose presence in this collection is to be ensured
+     * @return true if the collection was changed
+     */
+    @Override
+    public boolean offer(T t) {
+        return add(t);
+    }
+
+    /**
+     * Retrieves and removes first element of this collection or throws exception if collection is empty.
+     * @return first element of this collection
+     *
+     * @throws NoSuchElementException if this queue is empty
+     */
+    @Override
+    public T remove() {
+        if (first == null) {
+            throw new NoSuchElementException("List is empty");
+        }
+        T data = first.value;
+        first = first.next;
+        size--;
+        return data;
+    }
+
+    /**
+     * Retrieves and removes first element of this collection or null if the collection is empty.
+     * @return first element of this collection
+     */
+    @Override
+    public T poll() {
+        if (first == null) {
+            return null;
+        }
+        T data = first.value;
+        first = first.next;
+        size--;
+        return data;
+    }
+
+    /**
+     * Retrieves but does not remove first element of this collection or throws exception if collection is empty.
+     * @return first element of this collection
+     *
+     * @throws NoSuchElementException if this queue is empty
+     */
+    @Override
+    public T element() {
+        if (first == null) {
+            throw new NoSuchElementException("List is empty");
+        }
+        return first.value;
+    }
+
+    /**
+     * Retrieves first element without removing it  null if collection is empty.
+     * @return first element of this collection or null if collection is empty
+     *
+     */
+    @Override
+    public T peek() {
+        if (first == null) {
+            return null;
+        }
+        return first.value;
     }
 
     /**

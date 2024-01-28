@@ -27,7 +27,7 @@ Create new instance of collection using your own comparator, see the examples:
     SortedLinkedList<String> list = new SortedLinkedList<>(collator::compare);
 ```
 
-You can then use standard Java API of `java.util.Collection`
+You can then use standard Java API of `java.util.Collection` respective `java.util.Queue`
 
 ## Build ##
 Library is single module gradle project.
